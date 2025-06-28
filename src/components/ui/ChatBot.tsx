@@ -10,6 +10,12 @@ interface Message {
   text: string
   isBot: boolean
   timestamp: Date
+  suggestions?: Suggestion[]
+}
+
+interface Suggestion {
+  label: string
+  value: string
 }
 
 const ChatBot: React.FC = () => {
@@ -17,13 +23,15 @@ const ChatBot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: `Salut ! Je suis HK, l'assistant virtuel de ${PERSONAL_INFO.name}. Comment puis-je t'aider ?`,
+      text: `Salut ! Je suis HK, l'assistant virtuel de Hassan Bacri KEITA. Comment tu t'appelles ?`,
       isBot: true,
-      timestamp: new Date()
+      timestamp: new Date(),
     }
   ])
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [userName, setUserName] = useState<string | null>(null)
+  const [step, setStep] = useState<'askName' | 'suggest' | 'normal'>('askName')
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -70,38 +78,92 @@ const ChatBot: React.FC = () => {
     return "Je suis là pour vous renseigner sur Hassan Bacri KEITA, ses compétences, ses projets ou ses services. Posez-moi une question ou dites-moi ce que vous cherchez !"
   }
 
-  const handleSendMessage = async () => {
-    if (!inputValue.trim()) return
+  const handleSendMessage = async (customText?: string) => {
+    const textToSend = customText ?? inputValue
+    if (!textToSend.trim()) return
 
     const userMessage: Message = {
       id: Date.now().toString(),
-      text: inputValue,
+      text: textToSend,
       isBot: false,
       timestamp: new Date()
     }
-
     setMessages(prev => [...prev, userMessage])
     setInputValue('')
     setIsTyping(true)
 
-    // Simuler le temps de réponse du bot
     setTimeout(() => {
-      const botText = getBotResponse(userMessage.text)
-      const botMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        text: botText,
-        isBot: true,
-        timestamp: new Date()
+      // Étape 1 : Demande du prénom
+      if (step === 'askName') {
+        const name = textToSend.split(' ')[0].replace(/[^a-zA-ZÀ-ÿ\-']/g, '')
+        setUserName(name)
+        setStep('suggest')
+        setMessages(prev => [
+          ...prev,
+          {
+            id: (Date.now() + 1).toString(),
+            text: `Enchanté, ${name} ! Que veux-tu faire ? Voici quelques suggestions :`,
+            isBot: true,
+            timestamp: new Date(),
+            suggestions: [
+              { label: 'Découvrir mes services', value: 'services' },
+              { label: 'Voir mes projets', value: 'projets' },
+              { label: 'Me contacter', value: 'contact' },
+            ]
+          }
+        ])
+        setIsTyping(false)
+        return
       }
-      setMessages(prev => [...prev, botMessage])
+      // Étape 2 : Suggestions
+      if (step === 'suggest' && ['services', 'projets', 'contact'].includes(textToSend.toLowerCase())) {
+        let botText = ''
+        if (textToSend === 'services') {
+          botText = `${userName}, Hassan propose des services en développement web (React, Next.js, TypeScript), création de sites, dashboards, et il se forme aussi en cybersécurité. Tu veux plus de détails ?`
+        } else if (textToSend === 'projets') {
+          botText = `${userName}, tu peux découvrir les projets de Hassan dans la section 'Projets' du site. Il a réalisé des dashboards, des sites e-commerce, des PWA, etc.`
+        } else if (textToSend === 'contact') {
+          botText = `${userName}, pour contacter Hassan, utilise le formulaire de contact ou envoie-lui un email à hassan302025@outlook.fr.`
+        }
+        setStep('normal')
+        setMessages(prev => [
+          ...prev,
+          {
+            id: (Date.now() + 1).toString(),
+            text: botText,
+            isBot: true,
+            timestamp: new Date(),
+          }
+        ])
+        setIsTyping(false)
+        return
+      }
+      // Étape normale : réponses classiques
+      const botText = userName
+        ? `${userName}, je suis là pour t'aider sur Hassan Bacri KEITA, ses compétences, ses projets ou ses services. Pose-moi une question ou choisis une suggestion !`
+        : `Je suis là pour vous renseigner sur Hassan Bacri KEITA, ses compétences, ses projets ou ses services. Posez-moi une question !`
+      setMessages(prev => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          text: botText,
+          isBot: true,
+          timestamp: new Date(),
+        }
+      ])
       setIsTyping(false)
-    }, 1000 + Math.random() * 1000)
+    }, 800 + Math.random() * 800)
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       handleSendMessage()
     }
+  }
+
+  // Suggestions boutons
+  const handleSuggestionClick = (value: string) => {
+    handleSendMessage(value)
   }
 
   return (
@@ -172,6 +234,21 @@ const ChatBot: React.FC = () => {
                     }`}
                   >
                     <p className="text-sm">{message.text}</p>
+                    {/* Suggestions boutons */}
+                    {message.suggestions && (
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {message.suggestions.map((s) => (
+                          <button
+                            key={s.value}
+                            onClick={() => handleSuggestionClick(s.value)}
+                            className="px-3 py-1 bg-liquid-lava text-white rounded-full text-xs font-semibold shadow hover:bg-glount-lova transition-colors border border-liquid-lava"
+                            style={{ minWidth: 120 }}
+                          >
+                            {s.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
                     <p className="text-xs opacity-60 mt-1">
                       {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </p>
@@ -199,7 +276,7 @@ const ChatBot: React.FC = () => {
 
             {/* Input */}
             <div className="p-4 border-t border-gray-200">
-              <div className="flex space-x-2">
+              <div className="flex space-x-2 items-center">
                 <input
                   ref={inputRef}
                   type="text"
@@ -210,9 +287,10 @@ const ChatBot: React.FC = () => {
                   className="flex-1 px-3 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-liquid-lava text-sm"
                 />
                 <button
-                  onClick={handleSendMessage}
+                  onClick={() => handleSendMessage()}
                   disabled={!inputValue.trim()}
                   className="w-10 h-10 bg-liquid-lava text-white rounded-full flex items-center justify-center hover:bg-glount-lova transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  title="Envoyer"
                 >
                   <Icon name="Send" size={20} />
                 </button>
