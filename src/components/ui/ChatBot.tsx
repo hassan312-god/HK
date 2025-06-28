@@ -118,12 +118,20 @@ const ChatBot: React.FC = () => {
       // Étape 2 : Suggestions
       if (step === 'suggest' && ['services', 'projets', 'contact'].includes(textToSend.toLowerCase())) {
         let botText = ''
+        let pageUrl = ''
+        let pageLabel = ''
         if (textToSend === 'services') {
-          botText = `${userName}, Hassan propose des services en développement web (React, Next.js, TypeScript), création de sites, dashboards, et il se forme aussi en cybersécurité. Tu veux plus de détails ?`
+          botText = `${userName}, Hassan propose des services en développement web (React, Next.js, TypeScript), création de sites, dashboards, et il se forme aussi en cybersécurité. Tu veux en savoir plus ? Clique ci-dessous !`
+          pageUrl = '/services'
+          pageLabel = 'Voir les services'
         } else if (textToSend === 'projets') {
-          botText = `${userName}, tu peux découvrir les projets de Hassan dans la section 'Projets' du site. Il a réalisé des dashboards, des sites e-commerce, des PWA, etc.`
+          botText = `${userName}, tu peux découvrir les projets de Hassan dans la section 'Projets' du site. Il a réalisé des dashboards, des sites e-commerce, des PWA, etc. Clique ci-dessous pour voir !`
+          pageUrl = '/projects'
+          pageLabel = 'Voir les projets'
         } else if (textToSend === 'contact') {
-          botText = `${userName}, pour contacter Hassan, utilise le formulaire de contact ou envoie-lui un email à hassan302025@outlook.fr.`
+          botText = `${userName}, pour contacter Hassan, utilise le formulaire de contact ou envoie-lui un email à hassan302025@outlook.fr. Clique ci-dessous pour accéder à la page de contact !`
+          pageUrl = '/contact'
+          pageLabel = 'Aller à la page contact'
         }
         setStep('normal')
         setMessages(prev => [
@@ -133,8 +141,18 @@ const ChatBot: React.FC = () => {
             text: botText,
             isBot: true,
             timestamp: new Date(),
+            suggestions: [
+              { label: pageLabel, value: `goto:${pageUrl}` }
+            ]
           }
         ])
+        setIsTyping(false)
+        return
+      }
+      // Redirection si on clique sur un bouton "goto:..."
+      if (step === 'normal' && textToSend.startsWith('goto:')) {
+        const url = textToSend.replace('goto:', '')
+        window.location.href = url
         setIsTyping(false)
         return
       }
@@ -230,7 +248,7 @@ const ChatBot: React.FC = () => {
                     className={`max-w-xs px-3 py-2 rounded-2xl ${
                       message.isBot
                         ? 'bg-gray-100 text-gray-800'
-                        : 'bg-liquid-lava text-white'
+                        : 'bg-liquid-lava text-gray-900'
                     }`}
                   >
                     <p className="text-sm">{message.text}</p>
@@ -241,8 +259,8 @@ const ChatBot: React.FC = () => {
                           <button
                             key={s.value}
                             onClick={() => handleSuggestionClick(s.value)}
-                            className="px-3 py-1 bg-liquid-lava text-white rounded-full text-xs font-semibold shadow hover:bg-glount-lova transition-colors border border-liquid-lava"
-                            style={{ minWidth: 120 }}
+                            className="px-3 py-1 bg-liquid-lava text-white rounded-full text-xs font-semibold shadow-md hover:bg-glount-lova transition-colors border border-liquid-lava focus:outline-none focus:ring-2 focus:ring-liquid-lava"
+                            style={{ minWidth: 120, cursor: 'pointer' }}
                           >
                             {s.label}
                           </button>
