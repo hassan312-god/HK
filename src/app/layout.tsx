@@ -117,7 +117,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} bg-dark-void text-marigold antialiased`}>
+      <body className={`${inter.className} bg-white text-gray-900 antialiased`}>
         {/* Header avec navigation sticky */}
         <Header />
         

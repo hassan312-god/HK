@@ -12,9 +12,9 @@ import Icon from '@/components/ui/Icon'
  */
 const HomeHero: React.FC = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark-void">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
       {/* Background avec gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-dark-void via-slate-grey/10 to-dark-void" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50/10 to-white" />
       
       {/* Particles animées simplifiées */}
       <div className="absolute inset-0 overflow-hidden">
@@ -113,9 +113,9 @@ const HomeHero: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-bold text-marigold mb-6"
+            className="text-4xl sm:text-5xl lg:text-7xl font-bold text-gray-900 mb-6"
             style={{
-              textShadow: '0 0 30px rgba(246, 112, 17, 0.5), 0 0 60px rgba(246, 112, 17, 0.3)',
+              textShadow: '0 0 30px rgba(246, 112, 17, 0.1), 0 0 60px rgba(246, 112, 17, 0.05)',
             }}
           >
             {PERSONAL_INFO.name}
@@ -126,7 +126,7 @@ const HomeHero: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl sm:text-2xl lg:text-3xl text-liquid-lava font-semibold mb-8"
+            className="text-xl sm:text-2xl lg:text-3xl text-gray-700 font-semibold mb-8"
           >
             {PERSONAL_INFO.title}
           </motion.p>
@@ -136,7 +136,7 @@ const HomeHero: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-base sm:text-lg text-dusty-grey/80 mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed"
           >
             {PERSONAL_INFO.bio}
           </motion.p>
@@ -171,7 +171,7 @@ const HomeHero: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1 }}
-            className="mt-12 flex flex-wrap justify-center gap-6 text-sm text-dusty-grey"
+            className="mt-12 flex flex-wrap justify-center gap-6 text-sm text-gray-500"
           >
             <div className="flex items-center space-x-2">
               <Icon name="MapPin" size={16} color="liquid-lava" />
