@@ -96,17 +96,7 @@ npm run type-check   # Vérification TypeScript
 - [x] **Performance** : Lazy loading, optimisations Next.js
 - [x] **Responsive** : Mobile-first, breakpoints adaptatifs
 - [x] **Accessibilité** : Navigation clavier, focus states, contrastes
-
-### 🔄 En Cours de Développement
-
-- [ ] **Section À Propos** : Timeline, photo avec border-gradient
-- [ ] **Section Compétences** : Grille de cards avec progress bars
-- [ ] **Section Projets** : Cards avec hover effects et liens
-- [ ] **Section Services** : Services proposés avec icônes
-- [ ] **Section Contact** : Formulaire avec validation
-- [ ] **Footer** : Liens rapides et réseaux sociaux
-- [ ] **Tests** : Tests unitaires avec Jest
-- [ ] **Documentation** : Documentation des composants
+- [x] **Formulaire Contact** : Mailto avec pré-remplissage automatique
 
 ## 🌐 Déploiement
 
@@ -131,32 +121,6 @@ npm run type-check   # Vérification TypeScript
    - Chaque push sur `main` déclenche un déploiement
    - Preview deployments pour les pull requests
 
-### Netlify
-
-1. **Build settings** :
-   - Build command : `npm run build`
-   - Publish directory : `.next`
-   - Node version : 18
-
-2. **Configuration** :
-   ```toml
-   # netlify.toml
-   [build]
-     command = "npm run build"
-     publish = ".next"
-   
-   [[redirects]]
-     from = "/*"
-     to = "/index.html"
-     status = 200
-   ```
-
-### Autres Plateformes
-
-- **Railway** : Déploiement automatique depuis GitHub
-- **DigitalOcean App Platform** : Configuration simple
-- **AWS Amplify** : Intégration CI/CD complète
-
 ## 🔧 Configuration
 
 ### Variables d'Environnement
@@ -167,13 +131,6 @@ Créez un fichier `.env.local` :
 # Configuration du site
 NEXT_PUBLIC_SITE_URL=https://votreportfolio.com
 NEXT_PUBLIC_SITE_NAME=Portfolio Développeur Web & Pentester
-
-# Analytics (optionnel)
-NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
-NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
-
-# Contact (optionnel)
-CONTACT_EMAIL=contact@votreportfolio.com
 ```
 
 ### Personnalisation
@@ -197,93 +154,15 @@ CONTACT_EMAIL=contact@votreportfolio.com
 
 - **Lighthouse Score** : > 90 sur tous les critères
 - **First Contentful Paint** : < 1.5s
-- **Largest Contentful Paint** : < 2.5s
-- **Cumulative Layout Shift** : < 0.1
 
-## 🔒 Sécurité
+## 👨‍💻 Auteur
 
-### Mesures Implémentées
+**Hassan Bacri KEITA** - Développeur Web & Apprenti Pentester
 
-- **Headers de sécurité** : CSP, HSTS, X-Frame-Options
-- **Validation** : Côté client et serveur
-- **CSRF Protection** : Tokens sur formulaires
-- **Content Security Policy** : Restriction des ressources
-- **HTTPS** : Redirection automatique en production
-
-### Bonnes Pratiques
-
-- Pas de données sensibles exposées
-- Validation stricte des entrées utilisateur
-- Commentaires de sécurité dans le code
-- Mise à jour régulière des dépendances
-
-## 🧪 Tests
-
-### Tests Unitaires
-
-```bash
-# Installation de Jest
-npm install -D jest @testing-library/react @testing-library/jest-dom
-
-# Lancement des tests
-npm test
-
-# Tests en mode watch
-npm run test:watch
-```
-
-### Tests E2E (optionnel)
-
-```bash
-# Installation de Playwright
-npm install -D @playwright/test
-
-# Lancement des tests E2E
-npx playwright test
-```
-
-## 📝 Documentation
-
-### Composants
-
-Chaque composant est documenté avec :
-- Description de la fonctionnalité
-- Props TypeScript
-- Exemples d'utilisation
-- Notes de sécurité
-
-### API
-
-- **Utils** : Fonctions utilitaires réutilisables
-- **Constants** : Configuration centralisée
-- **Types** : Définitions TypeScript strictes
-
-## 🤝 Contribution
-
-1. Fork le projet
-2. Créez une branche feature (`git checkout -b feature/AmazingFeature`)
-3. Committez vos changements (`git commit -m 'Add AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrez une Pull Request
+- Email : hassan302025@outlook.fr
+- GitHub : [@hassan312-god](https://github.com/hassan312-god)
+- LinkedIn : [Hassan Bacri KEITA](https://linkedin.com/in/hassanbacri)
 
 ## 📄 Licence
 
 Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
-
-## 🙏 Remerciements
-
-- **Next.js** : Framework React moderne
-- **Tailwind CSS** : Framework CSS utilitaire
-- **Framer Motion** : Animations fluides
-- **Lucide React** : Icônes modernes
-- **Vercel** : Plateforme de déploiement
-
-## 📞 Contact
-
-- **Email** : contact@votreportfolio.com
-- **GitHub** : [@votre-username](https://github.com/votre-username)
-- **LinkedIn** : [Votre Profile](https://linkedin.com/in/votre-profile)
-
----
-
-**Note** : Ce portfolio est conçu pour impressionner les recruteurs tech et démontrer une expertise technique avancée en développement web et cybersécurité.
