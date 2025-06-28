@@ -85,28 +85,16 @@ const ChatBot: React.FC = () => {
       {/* Bouton flottant du bot */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-liquid-lava rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-liquid-lava rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group flex items-center justify-center"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <div className="relative w-full h-full flex items-center justify-center">
-          {/* Avatar du bot */}
-          <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center border-2 border-white shadow-inner">
-            <div className="w-8 h-8 bg-gradient-to-br from-liquid-lava to-glount-lova rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-sm">HK</span>
-            </div>
-          </div>
-          
-          {/* Indicateur de disponibilité */}
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white animate-pulse" />
-          
-          {/* Icône de chat */}
-          <Icon 
-            name="MessageCircle" 
-            size={24} 
-            className="absolute inset-0 m-auto text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
-          />
+        {/* Avatar du bot bien visible */}
+        <div className="w-14 h-14 bg-gradient-to-br from-liquid-lava to-glount-lova rounded-full flex items-center justify-center border-4 border-white shadow-lg">
+          <span className="text-white font-extrabold text-2xl select-none">HK</span>
         </div>
+        {/* Indicateur de disponibilité */}
+        <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white animate-pulse" />
       </motion.button>
 
       {/* Fenêtre de chat */}
@@ -121,10 +109,8 @@ const ChatBot: React.FC = () => {
             {/* Header du chat */}
             <div className="bg-gradient-to-r from-liquid-lava to-glount-lova p-4 text-white">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                  <div className="w-6 h-6 bg-gradient-to-br from-liquid-lava to-glount-lova rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-xs">HK</span>
-                  </div>
+                <div className="w-10 h-10 bg-gradient-to-br from-liquid-lava to-glount-lova rounded-full flex items-center justify-center border-2 border-white shadow">
+                  <span className="text-white font-bold text-lg select-none">HK</span>
                 </div>
                 <div>
                   <h3 className="font-semibold">Assistant HK</h3>
@@ -162,7 +148,6 @@ const ChatBot: React.FC = () => {
                   </div>
                 </motion.div>
               ))}
-              
               {/* Indicateur de frappe */}
               {isTyping && (
                 <motion.div
@@ -179,7 +164,6 @@ const ChatBot: React.FC = () => {
                   </div>
                 </motion.div>
               )}
-              
               <div ref={messagesEndRef} />
             </div>
 
@@ -198,9 +182,9 @@ const ChatBot: React.FC = () => {
                 <button
                   onClick={handleSendMessage}
                   disabled={!inputValue.trim()}
-                  className="w-8 h-8 bg-liquid-lava text-white rounded-full flex items-center justify-center hover:bg-glount-lova transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-10 h-10 bg-liquid-lava text-white rounded-full flex items-center justify-center hover:bg-glount-lova transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <Icon name="Send" size={14} />
+                  <Icon name="Send" size={20} />
                 </button>
               </div>
             </div>
