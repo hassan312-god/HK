@@ -108,7 +108,7 @@ export const WEB_SERVICES = [
     description: 'Création d\'interfaces utilisateur modernes et performantes avec HTML5, CSS3, JavaScript et TypeScript.',
     icon: 'Code',
     features: ['HTML5/CSS3', 'JavaScript/TypeScript', 'Responsive Design', 'UI/UX Moderne', 'Performance'],
-    pricing: 'À partir de 2000€',
+    pricing: 'À partir de 250 000 CFA',
     pricingNote: 'Projet complet, délai 2-4 semaines'
   },
   {
@@ -117,7 +117,7 @@ export const WEB_SERVICES = [
     description: 'Développement d\'applications web complètes avec dashboards admin et interfaces interactives.',
     icon: 'BarChart3',
     features: ['Dashboards Admin', 'Interfaces Interactives', 'Supabase/Firebase', 'API REST', 'Gestion de données'],
-    pricing: 'À partir de 4000€',
+    pricing: 'À partir de 500 000 CFA',
     pricingNote: 'Projet complet, délai 4-8 semaines'
   },
   {
@@ -126,7 +126,7 @@ export const WEB_SERVICES = [
     description: 'Création de sites web complexes avec plusieurs niveaux d\'accès et fonctionnalités avancées.',
     icon: 'Layers',
     features: ['Architecture Multi-niveaux', 'Gestion des rôles', 'Sécurité', 'Performance', 'Maintenance'],
-    pricing: 'À partir de 3500€',
+    pricing: 'À partir de 400 000 CFA',
     pricingNote: 'Projet complet, délai 3-6 semaines'
   }
 ] as const
@@ -147,7 +147,7 @@ export const IT_SERVICES = [
       'Documentation technique'
     ],
     deliverables: ['Rapport d\'audit', 'Configuration système', 'Plan de maintenance', 'Formation utilisateur'],
-    pricing: 'À partir de 2500€',
+    pricing: 'À partir de 300 000 CFA',
     pricingNote: 'Audit complet, délai 1-2 semaines'
   },
   {
@@ -164,7 +164,7 @@ export const IT_SERVICES = [
       'Formation et support'
     ],
     deliverables: ['Schéma réseau', 'Configuration équipements', 'Tests de performance', 'Documentation'],
-    pricing: 'À partir de 3000€',
+    pricing: 'À partir de 350 000 CFA',
     pricingNote: 'Configuration complète, délai 2-3 semaines'
   },
   {
@@ -181,7 +181,7 @@ export const IT_SERVICES = [
       'Monitoring continu'
     ],
     deliverables: ['Rapport de sécurité', 'Configuration sécurisée', 'Plan de formation', 'Monitoring'],
-    pricing: 'À partir de 3500€',
+    pricing: 'À partir de 400 000 CFA',
     pricingNote: 'Audit complet, délai 2-4 semaines'
   }
 ] as const
