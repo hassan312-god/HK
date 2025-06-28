@@ -46,6 +46,30 @@ const ChatBot: React.FC = () => {
     "Pour une collaboration, n'hésite pas à me contacter via le formulaire ou LinkedIn !"
   ]
 
+  const getBotResponse = (userText: string): string => {
+    const text = userText.toLowerCase()
+    if (/(salut|bonjour|coucou|hello)/.test(text)) {
+      return "Bonjour ! Ravi de vous voir ici 😊 Je suis l'assistant de Hassan Bacri KEITA. Que puis-je faire pour vous ?"
+    }
+    if (/(cv|ça va|ca va|comment vas-tu|comment tu vas)/.test(text)) {
+      return "Je vais très bien, merci ! Et vous ? N'hésitez pas à me demander des infos sur Hassan, ses compétences ou ses services."
+    }
+    if (/(service|propose|propositions|offre|aide|mission|freelance)/.test(text)) {
+      return "Hassan propose des services en développement web (React, Next.js, TypeScript), création de sites, dashboards, et il se forme aussi en cybersécurité. Besoin d'un projet ou d'une consultation ?"
+    }
+    if (/(projet|portfolio|réalisation|travail|exemple)/.test(text)) {
+      return "Vous pouvez découvrir les projets de Hassan dans la section 'Projets' du site. Il a réalisé des dashboards, des sites e-commerce, des PWA, etc."
+    }
+    if (/(contact|email|mail|joindre|message)/.test(text)) {
+      return "Pour contacter Hassan, utilisez le formulaire de contact ou envoyez-lui un email à hassan302025@outlook.fr. Il vous répondra rapidement !"
+    }
+    if (/(merci|thanks|thx)/.test(text)) {
+      return "Avec plaisir ! Si vous avez d'autres questions, je suis là pour vous aider."
+    }
+    // Réponse par défaut plus courtoise
+    return "Je suis là pour vous renseigner sur Hassan Bacri KEITA, ses compétences, ses projets ou ses services. Posez-moi une question ou dites-moi ce que vous cherchez !"
+  }
+
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return
 
@@ -62,10 +86,10 @@ const ChatBot: React.FC = () => {
 
     // Simuler le temps de réponse du bot
     setTimeout(() => {
-      const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)]
+      const botText = getBotResponse(userMessage.text)
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: randomResponse,
+        text: botText,
         isBot: true,
         timestamp: new Date()
       }
@@ -90,9 +114,11 @@ const ChatBot: React.FC = () => {
         whileTap={{ scale: 0.9 }}
       >
         {/* Avatar du bot bien visible */}
-        <div className="w-14 h-14 bg-gradient-to-br from-liquid-lava to-glount-lova rounded-full flex items-center justify-center border-4 border-white shadow-lg">
-          <span className="text-black font-extrabold text-2xl select-none">HK</span>
-        </div>
+        <img
+          src="/avatar-bot.png"
+          alt="Avatar Bot"
+          className="w-14 h-14 rounded-full border-4 border-white shadow-lg object-cover bg-gray-200"
+        />
         {/* Indicateur de disponibilité */}
         <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white animate-pulse" />
       </motion.button>
@@ -110,7 +136,11 @@ const ChatBot: React.FC = () => {
             <div className="bg-gradient-to-r from-liquid-lava to-glount-lova p-4 text-white">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-liquid-lava to-glount-lova rounded-full flex items-center justify-center border-2 border-white shadow">
-                  <span className="text-black font-bold text-lg select-none">HK</span>
+                  <img
+                    src="/avatar-bot.png"
+                    alt="Avatar Bot"
+                    className="w-10 h-10 rounded-full object-cover bg-gray-200"
+                  />
                 </div>
                 <div>
                   <h3 className="font-semibold">Assistant HK</h3>
