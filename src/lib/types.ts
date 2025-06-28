@@ -11,7 +11,7 @@ export type IconName =
   | 'Search' | 'List' | 'Network' | 'Shield' | 'Lock' | 'Scan' | 'Bug' | 'Terminal'
   | 'FileText' | 'BookOpen' | 'Github' | 'Linkedin' | 'Twitter' | 'Target'
   | 'Users' | 'GraduationCap' | 'ChevronDown' | 'Menu' | 'X' | 'ArrowRight'
-  | 'Phone' | 'MapPin' | 'Send' | 'Check' | 'AlertCircle' | 'Heart' | 'Clock';
+  | 'Phone' | 'MapPin' | 'Send' | 'Check' | 'AlertCircle' | 'Heart' | 'Clock' | 'MessageCircle';
 
 // Navigation
 export interface NavigationItem {

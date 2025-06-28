@@ -80,6 +80,7 @@ const Icon: React.FC<IconProps> = ({
     AlertCircle: 'AlertCircle',
     Heart: 'Heart',
     Clock: 'Clock',
+    MessageCircle: 'MessageCircle',
   }
 
   // Couleurs selon la palette Liquid Lava

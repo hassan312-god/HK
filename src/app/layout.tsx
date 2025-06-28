@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import { SEO_CONFIG } from "@/lib/constants";
+import ChatBot from '@/components/ui/ChatBot'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -127,6 +128,9 @@ export default function RootLayout({
         </main>
         
         {/* Footer sera ajouté ici */}
+        
+        {/* Bot assistant */}
+        <ChatBot />
         
         {/* Scripts de performance et analytics */}
         <script
