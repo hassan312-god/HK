@@ -3,6 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --dark-void: #16151A;
+  --liquid-lava: #F67011;
+  --slate-grey: #262626;
+  --glount-lova: #873800;
+  --dusty-grey: #878787;
+  --marigold: #FFE4D0;
+
+  --lava-gradient: linear-gradient(135deg, #F67011 0%, #873800 100%);
+  --dark-gradient: linear-gradient(180deg, #16151A 0%, #262626 100%);
+  --glow-orange: 0 0 20px rgba(246, 112, 17, 0.3);
 }
 
 @theme inline {
