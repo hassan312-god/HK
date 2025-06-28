@@ -91,7 +91,7 @@ const ChatBot: React.FC = () => {
       >
         {/* Avatar du bot bien visible */}
         <div className="w-14 h-14 bg-gradient-to-br from-liquid-lava to-glount-lova rounded-full flex items-center justify-center border-4 border-white shadow-lg">
-          <span className="text-white font-extrabold text-2xl select-none">HK</span>
+          <span className="text-black font-extrabold text-2xl select-none">HK</span>
         </div>
         {/* Indicateur de disponibilité */}
         <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white animate-pulse" />
@@ -110,7 +110,7 @@ const ChatBot: React.FC = () => {
             <div className="bg-gradient-to-r from-liquid-lava to-glount-lova p-4 text-white">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-liquid-lava to-glount-lova rounded-full flex items-center justify-center border-2 border-white shadow">
-                  <span className="text-white font-bold text-lg select-none">HK</span>
+                  <span className="text-black font-bold text-lg select-none">HK</span>
                 </div>
                 <div>
                   <h3 className="font-semibold">Assistant HK</h3>
