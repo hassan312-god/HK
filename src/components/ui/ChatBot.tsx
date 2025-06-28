@@ -115,8 +115,8 @@ const ChatBot: React.FC = () => {
         setIsTyping(false)
         return
       }
-      // Étape 2 : Suggestions
-      if (step === 'suggest' && ['services', 'projets', 'contact'].includes(textToSend.toLowerCase())) {
+      // Explication + bouton pour services/projets/contact à tout moment
+      if (['services', 'projets', 'contact'].includes(textToSend.toLowerCase())) {
         let botText = ''
         let pageUrl = ''
         let pageLabel = ''
@@ -259,8 +259,8 @@ const ChatBot: React.FC = () => {
                           <button
                             key={s.value}
                             onClick={() => handleSuggestionClick(s.value)}
-                            className="px-3 py-1 bg-liquid-lava text-white rounded-full text-xs font-semibold shadow-md hover:bg-glount-lova transition-colors border border-liquid-lava focus:outline-none focus:ring-2 focus:ring-liquid-lava"
-                            style={{ minWidth: 120, cursor: 'pointer' }}
+                            className="px-3 py-1 bg-gradient-to-r from-blue-600 to-violet-600 text-white rounded-full text-xs font-semibold shadow-md hover:from-violet-700 hover:to-blue-700 transition-colors border-0 focus:outline-none focus:ring-2 focus:ring-violet-400"
+                            style={{ minWidth: 120, cursor: 'pointer', boxShadow: '0 2px 8px rgba(80, 0, 200, 0.15)' }}
                           >
                             {s.label}
                           </button>
