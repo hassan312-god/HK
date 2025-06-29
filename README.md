@@ -1,4 +1,4 @@
-# Portfolio Développeur Web & Apprenti Pentester
+# Portfolio Développeur Web & Apprenti IT
 
 Portfolio moderne et professionnel suivant les standards de 2025, mettant en valeur les compétences en développement web et la formation en cours en pentesting.
 
